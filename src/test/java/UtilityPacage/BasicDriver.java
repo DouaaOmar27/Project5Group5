@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.v108.network.model.ReportingApiEndpointsChangedForOrigin;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -16,13 +17,14 @@ public class BasicDriver {
 
     public static WebDriver getDriver() {
         if (driver == null) {                             //if its null
-            ChromeOptions options = new ChromeOptions();  //create new chorome driver
+            ChromeOptions options = new ChromeOptions();  //create new chrome driver
             options.addArguments("--remote-allow-origins=*");
 
             System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");  //silent purpose
 
 
-            driver = new ChromeDriver(options);            //help work vith new version of chrom
+            driver = new ChromeDriver(options);            //help work with new version of chrome
+
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         }
@@ -38,5 +40,8 @@ public class BasicDriver {
         driver.quit();
         driver=null;
 
+    }
+
+    public static void setThreadDriverName(String browserName) {
     }
 }
